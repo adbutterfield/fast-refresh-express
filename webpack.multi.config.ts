@@ -26,7 +26,7 @@ const plugins = isDevMode
 
 const getMain = (target: "web" | "node") =>
   isDevMode && target === "web"
-    ? ["webpack-hot-middleware/client", "./react/main-web.js"]
+    ? ["webpack-hot-middleware/client", `./react/main-${target}.js`]
     : [`./react/main-${target}.js`];
 
 const chunkhash = isDevMode ? "" : "?v=[chunkhash:8]";
