@@ -1,17 +1,17 @@
-import { Express } from 'express';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import path from 'path';
-import config from '../webpack.config';
+import { Express } from "express";
+import webpack from "webpack";
+import webpackDevMiddleware from "webpack-dev-middleware";
+import webpackHotMiddleware from "webpack-hot-middleware";
+import path from "path";
+import config from "../webpack.config";
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 
 const compiler = webpack(config);
 
-const dirName = path.resolve(__dirname, '../react/');
+const dirName = path.resolve(__dirname, "../react/");
 
-compiler.hooks.afterEmit.tap('cleanup-the-require-cache', () => {
+compiler.hooks.afterEmit.tap("cleanup-the-require-cache", () => {
   // After webpack rebuild, clear the files from the require cache,
   // so that next server side render wil be in sync
   Object.keys(require.cache)
@@ -26,17 +26,20 @@ const addDevMiddleware = (app: Express): void => {
       webpackDevMiddleware(compiler, {
         serverSideRender: true,
         // @ts-ignore
-        publicPath: config.output.publicPath || '/',
-      }),
+        publicPath: config.output.publicPath || "/",
+        writeToDisk(filePath) {
+          return /loadable-stats/.test(filePath);
+        },
+      })
     );
 
     app.use(
       // @ts-ignore
       webpackHotMiddleware(compiler, {
         log: false,
-        path: '/__webpack_hmr',
+        path: "/__webpack_hmr",
         heartbeat: 10 * 1000,
-      }),
+      })
     );
   }
 };
