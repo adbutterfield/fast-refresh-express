@@ -108,4 +108,3 @@ const getConfig = (target: "web" | "node"): webpack.Configuration => ({
 });
 
 export default [getConfig("web"), getConfig("node")];
-// export default getConfig("web");
