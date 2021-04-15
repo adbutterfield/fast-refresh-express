@@ -16,7 +16,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.get("/", renderReact);
+app.get(["/", "/*"], renderReact);
 
 // 404 not found
 app.use((req: Req, res: Res) => {
