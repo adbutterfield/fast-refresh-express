@@ -7,10 +7,10 @@
     "start": "cross-env NODE_ENV=production node build/server/app.js",
     "prebuild": "rm -rf build",
     "build:react": "cross-env NODE_ENV=production webpack --config ./webpack.multi.config.ts",
-    "build:server": "cross-env NODE_ENV=production babel --extensions '.ts,.tsx' ./server/ -d build/server",
+    "build:server": "cross-env NODE_ENV=production babel --extensions '.ts,.tsx' ./src/server/ -d build/server",
     "build": "npm run build:react && npm run build:server",
     "predev": "rm -rf build",
-    "dev": "nodemon --ext env,js,ts,tsx,html --watch 'server/*' --exec node -- server/dev-server.js"
+    "dev": "nodemon --ext env,js,ts,tsx,html --watch 'src/server/*' --exec node -- src/server/dev-server.js"
   },
   "author": "",
   "license": "ISC",

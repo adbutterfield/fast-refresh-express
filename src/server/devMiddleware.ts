@@ -7,7 +7,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 const addDevMiddleware = (app: Express): void => {
   if (isDev) {
-    const { default: config } = require("../webpack.multi.config");
+    const { default: config } = require("../../webpack.multi.config");
     const compiler = webpack(config);
     app.use(
       // @ts-ignore

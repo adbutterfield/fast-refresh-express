@@ -8,10 +8,14 @@ const app = express();
 if (process.env.NODE_ENV === "development") {
   devMiddleware(app);
 }
+app.use((req: Req, res: Res, next: Next) => {
+  console.log(req.originalUrl);
+  return next();
+});
 
 // static assets server from the "build/public" folder
 app.use(
-  express.static(path.join(__dirname, "../build/public"), { index: false })
+  express.static(path.join(__dirname, "../../build/public"), { index: false })
 );
 app.use(express.json());
 app.use(express.urlencoded());

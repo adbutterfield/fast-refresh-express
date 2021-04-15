@@ -33,9 +33,9 @@ const getMain = (target: "web" | "node") =>
   isDevMode && target === "web"
     ? [
         `webpack-hot-middleware/client?name=${target}`,
-        `./react/main-${target}.js`,
+        `./src/react/main-${target}.js`,
       ]
-    : [`./react/main-${target}.js`];
+    : [`./src/react/main-${target}.js`];
 
 const chunkhash = isDevMode ? "" : "?v=[chunkhash:8]";
 
@@ -84,7 +84,7 @@ const getConfig = (target: "web" | "node"): webpack.Configuration => ({
   optimization: {
     moduleIds: "named",
     chunkIds: "named",
-    // runtimeChunk: true, // see https://webpack.js.org/guides/build-performance/#minimal-entry-chunk
+    runtimeChunk: true, // see https://webpack.js.org/guides/build-performance/#minimal-entry-chunk
   },
   externals:
     target === "node"
