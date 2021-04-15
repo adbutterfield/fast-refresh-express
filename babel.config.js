@@ -10,6 +10,27 @@ module.exports = (api) => {
   const web = api.caller(isWebTarget);
   const webpack = api.caller(isWebpack);
 
+  const isDevMode = process.env.NODE_ENV === "development";
+
+  const plugins = isDevMode
+    ? [
+        "@babel/plugin-syntax-dynamic-import",
+        "react-refresh/babel",
+        "@loadable/babel-plugin",
+        [
+          "babel-plugin-styled-components",
+          { ssr: true, displayName: true, preprocess: false },
+        ],
+      ]
+    : [
+        "@babel/plugin-syntax-dynamic-import",
+        "@loadable/babel-plugin",
+        [
+          "babel-plugin-styled-components",
+          { ssr: true, displayName: true, preprocess: false },
+        ],
+      ];
+
   return {
     presets: [
       "@babel/preset-react",
@@ -24,13 +45,6 @@ module.exports = (api) => {
       ],
       "@babel/preset-typescript",
     ],
-    plugins: [
-      "@babel/plugin-syntax-dynamic-import",
-      [
-        "babel-plugin-styled-components",
-        { ssr: true, displayName: true, preprocess: false },
-      ],
-      "@loadable/babel-plugin",
-    ],
+    plugins,
   };
 };

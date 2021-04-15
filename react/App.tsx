@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import loadable from '@loadable/component';
+import React from "react";
+import { Switch, Route, Link } from "react-router-dom";
+import loadable from "@loadable/component";
 
-const Top = loadable(() => import('./Top'));
-const Page = loadable(() => import('./Page'));
+const Top = loadable(() => import("./Top"));
+const Page = loadable(() => import("./Page"));
 
 const App: React.FC = () => (
   <>

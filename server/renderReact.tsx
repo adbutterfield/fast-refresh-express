@@ -18,15 +18,16 @@ function renderReact(req: Req, res: Res, next: Next): Res | void {
     // Chunk extractor to determine which bundle chunks are needed by the render
     const nodeExtractor = new ChunkExtractor({
       statsFile: nodeStats,
+      outputPath: path.resolve(__dirname, `../build/server`),
     });
     // Get the App component, using server loadable-stats
     const { default: App } = nodeExtractor.requireEntrypoint();
 
     const webExtractor = new ChunkExtractor({
       statsFile: webStats,
+      outputPath: path.resolve(__dirname, `../build/public`),
     });
     // Must create a mock window object for components that might need it
-    global.window = {} as Window & typeof globalThis;
 
     // SSR render the full App
     const appHtml = renderToString(

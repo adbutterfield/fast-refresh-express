@@ -2,7 +2,6 @@ import { Express } from "express";
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "webpack-hot-middleware";
-import path from "path";
 import config from "../webpack.multi.config";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -15,7 +14,7 @@ const addDevMiddleware = (app: Express): void => {
       // @ts-ignore
       webpackDevMiddleware(compiler, {
         serverSideRender: true,
-        publicPath: "/build/public",
+        publicPath: "/",
         writeToDisk(filePath) {
           return (
             /build\/server\//.test(filePath) || /loadable-stats/.test(filePath)

@@ -9,18 +9,18 @@ if (process.env.NODE_ENV === "development") {
   devMiddleware(app);
 }
 
-// static assets server from the "dist" folder
+// static assets server from the "build/public" folder
 app.use(
   express.static(path.join(__dirname, "../build/public"), { index: false })
 );
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.get("/*", renderReact);
+app.get("/", renderReact);
 
 // 404 not found
 app.use((req: Req, res: Res) => {
-  return res.send("errors/404");
+  return res.sendStatus(404);
 });
 
 // unhandled error handling
