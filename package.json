@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node server",
-    "build": "NODE_ENV=production webpack",
+    "start": "cross-env NODE_ENV=production node build/server/app.js",
+    "prebuild": "rm -rf build",
+    "build:react": "cross-env NODE_ENV=production webpack --config ./webpack.multi.config.ts",
+    "build:server": "cross-env NODE_ENV=production babel --extensions '.ts,.tsx' ./server/ -d build/server",
+    "build": "npm run build:react && npm run build:server",
     "predev": "rm -rf build",
-    "dev": "nodemon --ext env,js,ts,tsx,html --watch 'server/*' --exec node -- server"
+    "dev": "nodemon --ext env,js,ts,tsx,html --watch 'server/*' --exec node -- server/dev-server.js"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +28,7 @@
     "babel-plugin-styled-components": "^1.12.0",
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.10.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "dotenv-defaults": "^2.0.1",
     "express": "^4.16.4",

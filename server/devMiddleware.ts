@@ -2,14 +2,13 @@ import { Express } from "express";
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "webpack-hot-middleware";
-import config from "../webpack.multi.config";
 
 const isDev = process.env.NODE_ENV === "development";
 
-const compiler = webpack(config);
-
 const addDevMiddleware = (app: Express): void => {
   if (isDev) {
+    const { default: config } = require("../webpack.multi.config");
+    const compiler = webpack(config);
     app.use(
       // @ts-ignore
       webpackDevMiddleware(compiler, {
