@@ -9,12 +9,10 @@ const nodeStats = path.resolve(
   __dirname,
   "../../build/server/loadable-stats.json"
 );
-console.log("nodeStats", nodeStats);
 const webStats = path.resolve(
   __dirname,
   "../../build/public/loadable-stats.json"
 );
-console.log("webStats", webStats);
 
 function renderReact(req: Req, res: Res, next: Next): Res | void {
   try {
