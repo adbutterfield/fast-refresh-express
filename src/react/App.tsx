@@ -2,8 +2,8 @@ import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import loadable from "@loadable/component";
 
-const Top = loadable(() => import("./Top"), { ssr: true });
-const Page = loadable(() => import("./Page"), { ssr: true });
+const Top = loadable(() => import("./Top"));
+const Page = loadable(() => import("./Page"));
 
 const App: React.FC = () => (
   <>
