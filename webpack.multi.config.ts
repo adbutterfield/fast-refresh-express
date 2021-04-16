@@ -37,7 +37,8 @@ const getMain = (target: "web" | "node") =>
       ]
     : [`./src/react/main-${target}.js`];
 
-const chunkhash = isDevMode ? "" : "?v=[chunkhash:8]";
+const chunkhash = (target: "web" | "node") =>
+  !isDevMode && target === "web" ? "?v=[chunkhash:8]" : "";
 
 const getConfig = (target: "web" | "node"): webpack.Configuration => ({
   mode: isDevMode ? "development" : "production",
@@ -48,8 +49,8 @@ const getConfig = (target: "web" | "node"): webpack.Configuration => ({
   },
   output: {
     path: getBuildPath(target),
-    filename: `[name].js${chunkhash}`,
-    chunkFilename: `[name].chunk.js${chunkhash}`,
+    filename: `[name].js${chunkhash(target)}`,
+    chunkFilename: `[name].chunk.js${chunkhash(target)}`,
     publicPath: `/`,
     ...(target === "node" && {
       library: {
@@ -84,7 +85,7 @@ const getConfig = (target: "web" | "node"): webpack.Configuration => ({
   optimization: {
     moduleIds: "named",
     chunkIds: "named",
-    runtimeChunk: true, // see https://webpack.js.org/guides/build-performance/#minimal-entry-chunk
+    // runtimeChunk: true, // see https://webpack.js.org/guides/build-performance/#minimal-entry-chunk
   },
   externals:
     target === "node"
