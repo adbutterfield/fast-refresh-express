@@ -7,13 +7,14 @@ const isDev = process.env.NODE_ENV === "development";
 
 const addDevMiddleware = (app: Express): void => {
   if (isDev) {
-    const { default: config } = require("../../webpack.multi.config");
+    const { default: config } = require("../../webpack.config");
     const compiler = webpack(config);
     app.use(
       // @ts-ignore
       webpackDevMiddleware(compiler, {
         serverSideRender: true,
         publicPath: "/",
+        // Write the loadable-stats and SSR chunks to disk
         writeToDisk(filePath) {
           return (
             /build\/server\//.test(filePath) || /loadable-stats/.test(filePath)
