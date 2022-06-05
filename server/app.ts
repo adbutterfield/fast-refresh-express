@@ -1,9 +1,14 @@
 import express from 'express';
 import path from 'path';
+import pino from 'pino-http';
 import renderReact from './renderReact';
 import devMiddleware from './devMiddleware';
 
+const logger = pino();
+
 const app = express();
+
+app.use(logger);
 
 if (process.env.NODE_ENV === 'development') {
   devMiddleware(app);
