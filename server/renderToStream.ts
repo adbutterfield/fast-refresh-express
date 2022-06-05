@@ -1,6 +1,6 @@
 import { renderToPipeableStream } from "react-dom/server";
 import { Duplex } from "stream";
-import { ServerStyleSheet } from "styled-components";
+import webpackStats from '../dist/webpack-stats.json';
 
 class RenderStream extends Duplex {
   _read() {}
@@ -16,13 +16,12 @@ class RenderStream extends Duplex {
 
 function renderToStream(
   jsx: React.ReactElement,
-  styleSheet: ServerStyleSheet
 ): Promise<NodeJS.ReadableStream> {
   return new Promise((resolve, reject) => {
     const stream = new RenderStream();
 
     const { pipe } = renderToPipeableStream(jsx, {
-      bootstrapScripts: ["/main.js"],
+      bootstrapScripts: [webpackStats["main.js"]],
       onAllReady() {
         pipe(stream);
       },
@@ -30,7 +29,7 @@ function renderToStream(
 
     stream.on("finish", () => {
       stream.push(null);
-      return resolve(styleSheet.interleaveWithNodeStream(stream));
+      return resolve(stream);
     });
 
     stream.on("error", (error) => {

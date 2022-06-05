@@ -1,8 +1,7 @@
 import React from 'react';
-import Cmp from './components';
 
 const Page: React.FC = () => {
-  return <Cmp>PAGE</Cmp>;
+  return <p>PAGE</p>;
 };
 
 export default Page;
