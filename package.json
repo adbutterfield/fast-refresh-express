@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node server",
     "build": "NODE_ENV=production webpack",
-    "dev": "nodemon --ext env,js,ts,tsx,html --watch 'server/*' --exec node -- server"
+    "dev": "nodemon --ext env,js,ts,tsx,html --watch './*' --exec node -- server"
   },
   "author": "",
   "license": "ISC",
