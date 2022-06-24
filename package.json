@@ -26,6 +26,7 @@
     "express": "^4.18.1",
     "react": "^18.3.0-next-cf665c4b7-20220620",
     "react-dom": "^18.3.0-next-cf665c4b7-20220620",
+    "react-is": "^18.2.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "regenerator-runtime": "^0.13.9",
@@ -48,6 +49,7 @@
     "react-refresh": "^0.13.0",
     "typescript": "^4.7.2",
     "typescript-styled-plugin": "^0.18.2",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-middleware": "^5.3.3",
     "webpack-hot-middleware": "^2.25.1",
     "webpack-manifest-plugin": "^5.0.0"
