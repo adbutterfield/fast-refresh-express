@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Cmp = styled.div`
@@ -10,6 +10,21 @@ const Cmp = styled.div`
 //   const { children } = props;
 
 //   return <div>{ children }</div>;
+// }
+
+// Also, this will work, but component is not rendered (until after hydration finishes?)
+// const StyledCmp = styled.div`
+//   color: red;
+// `;
+
+// const Cmp: React.FC<PropsWithChildren> = (props) => {
+//   const { children } = props;
+//   const [mounted, setMounted] = useState(false);
+
+//   useEffect(() => setMounted(true), []);
+//   if (!mounted) return null;
+
+//   return <StyledCmp>{ children }</StyledCmp>;
 // }
 
 export default Cmp;
