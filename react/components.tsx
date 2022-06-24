@@ -13,6 +13,7 @@ const Cmp = styled.div`
 // }
 
 // Also, this will work, but component is not rendered initially (until after hydration finishes?)
+// useEffect of course doesn't run on the server, so it isn't rendered server side
 // const StyledCmp = styled.div`
 //   color: red;
 // `;
