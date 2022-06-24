@@ -12,7 +12,7 @@ const Cmp = styled.div`
 //   return <div>{ children }</div>;
 // }
 
-// Also, this will work, but component is not rendered (until after hydration finishes?)
+// Also, this will work, but component is not rendered initially (until after hydration finishes?)
 // const StyledCmp = styled.div`
 //   color: red;
 // `;
