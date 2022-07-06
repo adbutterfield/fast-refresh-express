@@ -2,7 +2,7 @@ import React from "react";
 import { StaticRouter } from "react-router-dom/server";
 import { ServerStyleSheet } from "styled-components";
 import App from "../react/App";
-import renderToStream from "./renderToStream";
+import renderFromStream from "./renderFromStream";
 
 async function renderReact(
   req: Req,
@@ -24,21 +24,19 @@ async function renderReact(
       )
     );
 
-    const stream = await renderToStream(jsx, styleSheet);
-    res.write(`<!DOCTYPE html>
+    const appHtml = await renderFromStream(jsx);
+    const responseHtml = `<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
+    ${/* styles for styled components rendered by that page */ styleSheet.getStyleTags()}
   </head>
   <body>
-    <div id="react-app">`);
-    // Stream the react generated markup
-    stream.pipe(res, { end: false });
-    stream.on("end", () => {
-      res.end(`</div>
+    <div id="react-app">${appHtml}</div>
   </body>
-</html>`);
-    });
+</html>`
+
+return res.send(responseHtml)
   } catch (err) {
     return next(err);
   }
