@@ -2,9 +2,7 @@
 
 Example with express, react 18, styled components, typescript, SSR, and react fast refresh
 
-Currently does not work.
-
-Switch the components exported by `react/components.tsx`, to not use styled components, and see it work.
+Currently, streaming render in react 18 + styled components has some issues. Current rendering isn't ideal maybe, but it works!
 
 Start: `npm run dev`
 
