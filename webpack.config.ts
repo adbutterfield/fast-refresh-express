@@ -1,51 +1,58 @@
-import path from 'path';
-import LoadablePlugin from '@loadable/webpack-plugin';
-import webpack from 'webpack';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import path from "path";
+import webpack from "webpack";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { WebpackManifestPlugin } from "webpack-manifest-plugin";
 
-const isDevMode = process.env.NODE_ENV === 'development';
+const isDevMode = process.env.NODE_ENV === "development";
 
-const jsPlugins = isDevMode ? ['react-refresh/babel'] : [];
+const jsPlugins = isDevMode ? ["react-refresh/babel"] : [];
 
-const sharedPlugins = [new LoadablePlugin()];
+const sharedPlugins = [
+  new WebpackManifestPlugin({
+    fileName: "webpack-stats.json",
+    writeToFileEmit: true,
+  }),
+];
 const plugins = isDevMode
   ? [
       ...sharedPlugins,
       new webpack.HotModuleReplacementPlugin(),
       new ReactRefreshWebpackPlugin({
         overlay: {
-          sockIntegration: 'whm',
+          sockIntegration: "whm",
         },
       }),
     ]
   : sharedPlugins;
 
-const main = isDevMode ? ['webpack-hot-middleware/client', './react/index.tsx'] : ['./react/index.tsx'];
+const main = isDevMode
+  ? ["webpack-hot-middleware/client", "./react/index.tsx"]
+  : ["./react/index.tsx"];
 
-const chunkhash = isDevMode ? '' : '?v=[chunkhash:8]';
+const contenthash = isDevMode ? "" : "?v=[contenthash:8]";
 
 const webpackConfig: webpack.Configuration = {
-  mode: isDevMode ? 'development' : 'production',
+  mode: isDevMode ? "development" : "production",
   entry: {
     main,
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: `[name].js${chunkhash}`,
-    chunkFilename: `[name].chunk.js${chunkhash}`,
-    publicPath: '/',
+    path: path.resolve(__dirname, "./dist"),
+    filename: `[name].js${contenthash}`,
+    chunkFilename: `[name].chunk.js${contenthash}`,
+    publicPath: "/",
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: [".ts", ".tsx", ".js", ".json"],
   },
   module: {
     rules: [
       {
         test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
-        include: [path.join(__dirname, 'react')], // only bundle files in this directory
+        include: [path.join(__dirname, "react")], // only bundle files in this directory
         use: {
-          loader: 'babel-loader', // cf. .babelrc.json in this folder and browser list in package.json
+          loader: "babel-loader", // cf. .babelrc.json in this folder and browser list in package.json
           options: {
             plugins: jsPlugins,
           },
@@ -59,9 +66,9 @@ const webpackConfig: webpack.Configuration = {
 if (isDevMode) {
   webpackConfig.cache = {
     // https://webpack.js.org/configuration/other-options/#cache
-    type: 'filesystem',
-    cacheDirectory: path.resolve(__dirname, '.tmp'),
-    name: 'dev-react-cache',
+    type: "filesystem",
+    cacheDirectory: path.resolve(__dirname, ".tmp"),
+    name: "dev-react-cache",
   };
 }
 

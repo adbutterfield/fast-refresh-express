@@ -1,13 +1,8 @@
-import React from 'react';
-import Cmp from './components';
+import React from "react";
+import Cmp from "./components";
 
 const Top: React.FC = () => {
-  return (
-    <>
-      <Cmp>TOP</Cmp>
-      {/* <Cmp>TOP</Cmp> */}
-    </>
-  );
+  return <Cmp>TOP</Cmp>;
 };
 
 export default Top;
