@@ -53,10 +53,5 @@
     "webpack-dev-middleware": "^5.3.3",
     "webpack-hot-middleware": "^2.25.1",
     "webpack-manifest-plugin": "^5.0.0"
-  },
-  "browserslist": [
-    "last 2 versions and >.1% in JP",
-    "ie 11",
-    "safari >=12"
-  ]
+  }
 }
