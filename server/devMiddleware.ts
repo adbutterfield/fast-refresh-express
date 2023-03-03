@@ -2,7 +2,7 @@ import { Express } from "express";
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "@gatsbyjs/webpack-hot-middleware";
-import path from "path";
+import path from "node:path";
 import config from "../webpack.config";
 
 const isDev = process.env.NODE_ENV === "development";

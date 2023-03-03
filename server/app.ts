@@ -1,5 +1,5 @@
 import express from 'express';
-import path from 'path';
+import path from 'node:path';
 import renderReact from './renderReact';
 import devMiddleware from './devMiddleware';
 
