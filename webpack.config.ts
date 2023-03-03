@@ -5,8 +5,6 @@ import { WebpackManifestPlugin } from "webpack-manifest-plugin";
 
 const isDevMode = process.env.NODE_ENV === "development";
 
-const jsPlugins = isDevMode ? ["react-refresh/babel"] : [];
-
 const sharedPlugins = [
   new WebpackManifestPlugin({
     fileName: "webpack-stats.json",
@@ -52,10 +50,7 @@ const webpackConfig: webpack.Configuration = {
         exclude: /node_modules/,
         include: [path.join(__dirname, "react")], // only bundle files in this directory
         use: {
-          loader: "babel-loader", // cf. .babelrc.json in this folder and browser list in package.json
-          options: {
-            plugins: jsPlugins,
-          },
+          loader: "swc-loader", // cf. .swc.json in this folder and browser list in package.json
         },
       },
     ],
