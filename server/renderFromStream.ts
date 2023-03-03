@@ -20,7 +20,6 @@ async function renderToStream(
 
   webpackStats = JSON.parse((await readFile(path.join(__dirname, '../dist/webpack-stats.json'))).toString());
 
-  console.log('webpackStats', webpackStats)
   return new Promise((resolve, reject) => {
     const { pipe } = renderToPipeableStream(jsx, {
       bootstrapScripts: [webpackStats['main.js']],
