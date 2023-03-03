@@ -1,8 +1,11 @@
 import { renderToPipeableStream } from "react-dom/server";
-import { Writable } from "stream";
-import webpackStats from '../dist/webpack-stats.json';
+import { Writable } from "node:stream";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
-function renderToStream(
+let webpackStats: Record<string, string> = {};
+
+async function renderToStream(
   jsx: React.ReactElement
 ): Promise<string> {
   let body = '';
@@ -15,6 +18,9 @@ function renderToStream(
     },
   });
 
+  webpackStats = JSON.parse((await readFile(path.join(__dirname, '../dist/webpack-stats.json'))).toString());
+
+  console.log('webpackStats', webpackStats)
   return new Promise((resolve, reject) => {
     const { pipe } = renderToPipeableStream(jsx, {
       bootstrapScripts: [webpackStats['main.js']],
