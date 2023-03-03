@@ -18,7 +18,7 @@ async function renderToStream(
     },
   });
 
-  webpackStats = JSON.parse((await readFile(path.join(__dirname, '../dist/webpack-stats.json'))).toString());
+  webpackStats = JSON.parse((await readFile(path.join(__dirname, '../dist/webpack-stats.json'), 'utf-8')));
 
   return new Promise((resolve, reject) => {
     const { pipe } = renderToPipeableStream(jsx, {
