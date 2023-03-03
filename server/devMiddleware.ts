@@ -1,7 +1,7 @@
 import { Express } from "express";
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
-import webpackHotMiddleware from "webpack-hot-middleware";
+import webpackHotMiddleware from "@gatsbyjs/webpack-hot-middleware";
 import path from "path";
 import config from "../webpack.config";
 
