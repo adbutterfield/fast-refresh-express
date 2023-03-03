@@ -1,6 +1,6 @@
 import React from "react";
 import { StaticRouter } from "react-router-dom/server";
-import { ServerStyleSheet } from "styled-components";
+import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import App from "../react/App";
 import renderFromStream from "./renderFromStream";
 
@@ -16,13 +16,11 @@ async function renderReact(
     global.window = {} as Window & typeof globalThis;
 
     // SSR render the full App
-    const jsx = styleSheet.collectStyles(
-      React.createElement(
-        StaticRouter,
-        { location: req.originalUrl },
-        React.createElement(App)
-      )
-    );
+    const jsx = <StyleSheetManager sheet={styleSheet.instance}>
+      <StaticRouter location={req.originalUrl}>
+        <App />
+      </StaticRouter>
+    </StyleSheetManager>
 
     const appHtml = await renderFromStream(jsx);
     const responseHtml = `<!DOCTYPE html>
