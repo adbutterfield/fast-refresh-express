@@ -29,7 +29,7 @@ const main = isDevMode
   ? ["webpack-hot-middleware/client", "./react/index.tsx"]
   : ["./react/index.tsx"];
 
-const contenthash = isDevMode ? "" : "?v=[contenthash:8]";
+const contenthash = isDevMode ? "" : ".[contenthash:8]";
 
 const webpackConfig: webpack.Configuration = {
   mode: isDevMode ? "development" : "production",
@@ -38,8 +38,8 @@ const webpackConfig: webpack.Configuration = {
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: `[name].js${contenthash}`,
-    chunkFilename: `[name].chunk.js${contenthash}`,
+    filename: `[name]${contenthash}.js`,
+    chunkFilename: `[name].chunk${contenthash}.js`,
     publicPath: "/",
   },
   resolve: {
