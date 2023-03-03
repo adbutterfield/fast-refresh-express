@@ -2,6 +2,7 @@ import path from "node:path";
 import webpack from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { WebpackManifestPlugin } from "webpack-manifest-plugin";
+import swcConfig from './swc.config.json';
 
 const isDevMode = process.env.NODE_ENV === "development";
 
@@ -51,6 +52,7 @@ const webpackConfig: webpack.Configuration = {
         include: [path.join(__dirname, "react")], // only bundle files in this directory
         use: {
           loader: "swc-loader", // cf. .swc.json in this folder and browser list in package.json
+          ...(isDevMode && { options: swcConfig })
         },
       },
     ],
