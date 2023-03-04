@@ -1,5 +1,5 @@
-import React from 'react';
-import Cmp from './components';
+import React from "react";
+import Cmp from "./components";
 
 const Page: React.FC = () => {
   return <Cmp>PAGE</Cmp>;

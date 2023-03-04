@@ -1,24 +1,24 @@
-import express from 'express';
-import path from 'node:path';
-import renderReact from './renderReact';
-import devMiddleware from './devMiddleware';
+import express from "express";
+import path from "node:path";
+import renderReact from "./renderReact";
+import devMiddleware from "./devMiddleware";
 
 const app = express();
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   devMiddleware(app);
 }
 
 // static assets server from the "dist" folder
-app.use(express.static(path.join(__dirname, '../dist'), { index: false }));
+app.use(express.static(path.join(__dirname, "../dist"), { index: false }));
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.get('/*', renderReact);
+app.get("/*", renderReact);
 
 // 404 not found
 app.use((req: Req, res: Res) => {
-  return res.send('errors/404');
+  return res.send("errors/404");
 });
 
 // unhandled error handling

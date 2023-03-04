@@ -5,10 +5,8 @@ import path from "node:path";
 
 let webpackStats: Record<string, string> = {};
 
-async function renderToStream(
-  jsx: React.ReactElement
-): Promise<string> {
-  let body = '';
+async function renderToStream(jsx: React.ReactElement): Promise<string> {
+  let body = "";
 
   const writableStream = new Writable({
     write: (chunk, encoding, callback) => {
@@ -18,23 +16,25 @@ async function renderToStream(
     },
   });
 
-  webpackStats = JSON.parse((await readFile(path.join(__dirname, '../dist/webpack-stats.json'), 'utf-8')));
+  webpackStats = JSON.parse(
+    await readFile(path.join(__dirname, "../dist/webpack-stats.json"), "utf-8")
+  );
 
   return new Promise((resolve, reject) => {
     const { pipe } = renderToPipeableStream(jsx, {
-      bootstrapScripts: [webpackStats['main.js']],
+      bootstrapScripts: [webpackStats["main.js"]],
       onAllReady() {
         pipe(writableStream);
       },
     });
 
-    writableStream.on('finish', () => {
+    writableStream.on("finish", () => {
       return resolve(body);
     });
 
-    writableStream.on('error', (error) => {
+    writableStream.on("error", (error) => {
       return reject(error);
-    })
+    });
   });
 }
 

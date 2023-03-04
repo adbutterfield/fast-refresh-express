@@ -1,8 +1,8 @@
-const path = require('node:path');
+const path = require("node:path");
 
-require('dotenv-defaults/config');
-require('@swc/register')({
-  extensions: ['.js', '.ts', '.tsx'],
-  configFile: path.resolve(process.cwd(), 'swc.config.json')
+require("dotenv-defaults/config");
+require("@swc/register")({
+  extensions: [".js", ".ts", ".tsx"],
+  configFile: path.resolve(process.cwd(), "swc.config.json"),
 });
-require('./app.ts');
+require("./app.ts");

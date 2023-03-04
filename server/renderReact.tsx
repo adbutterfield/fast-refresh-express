@@ -16,25 +16,29 @@ async function renderReact(
     global.window = {} as Window & typeof globalThis;
 
     // SSR render the full App
-    const jsx = <StyleSheetManager sheet={styleSheet.instance}>
-      <StaticRouter location={req.originalUrl}>
-        <App />
-      </StaticRouter>
-    </StyleSheetManager>
+    const jsx = (
+      <StyleSheetManager sheet={styleSheet.instance}>
+        <StaticRouter location={req.originalUrl}>
+          <App />
+        </StaticRouter>
+      </StyleSheetManager>
+    );
 
     const appHtml = await renderFromStream(jsx);
     const responseHtml = `<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    ${/* styles for styled components rendered by that page */ styleSheet.getStyleTags()}
+    ${
+      /* styles for styled components rendered by that page */ styleSheet.getStyleTags()
+    }
   </head>
   <body>
     <div id="react-app">${appHtml}</div>
   </body>
-</html>`
+</html>`;
 
-return res.send(responseHtml)
+    return res.send(responseHtml);
   } catch (err) {
     return next(err);
   }

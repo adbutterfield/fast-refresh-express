@@ -15,8 +15,22 @@ const App: React.FC = () => (
       <br />
       <br />
       <Routes>
-        <Route path="/" element={<Suspense fallback={<div>Suspending Top...</div>}><Top /></Suspense>} />
-        <Route path="/page" element={<Suspense fallback={<div>Suspending Page...</div>}><Page /></Suspense>} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<div>Suspending Top...</div>}>
+              <Top />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/page"
+          element={
+            <Suspense fallback={<div>Suspending Page...</div>}>
+              <Page />
+            </Suspense>
+          }
+        />
       </Routes>
     </ErrorBoundary>
   </Suspense>
