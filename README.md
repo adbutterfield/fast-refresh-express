@@ -8,8 +8,11 @@ Example with:
 - [TypeScript](https://www.typescriptlang.org/)
 - [SWC](https://swc.rs/)
   - Using [swc-loader](https://www.npmjs.com/package/swc-loader) for [webpack](https://webpack.js.org/)
-  - And [@swc/register](https://www.npmjs.com/package/@swc/register) to compile server-side TypeScript at runtime
-- [React Fast Refresh](https://www.npmjs.com/package/react-refresh), via [@pmmmwh/react-refresh-webpack-plugin](https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin)
+  - and [@swc/register](https://www.npmjs.com/package/@swc/register) to compile server-side TypeScript at runtime
+  - with tests using [@swc/jest](https://www.npmjs.com/package/@swc/jest)
+- [React Fast Refresh](https://www.npmjs.com/package/react-refresh),
+  - Using [@pmmmwh/react-refresh-webpack-plugin](https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin)
+  - and webpack-hot-middleware (thanks to [@gatsbyjs/webpack-hot-middleware](https://www.npmjs.com/package/@gatsbyjs/webpack-hot-middleware))
 - Server side rendering
 
 ## About React 18 streaming render
@@ -27,3 +30,7 @@ Runs at: `http://localhost:3000`
 Build: `npm run build`
 
 Start: `npm start`
+
+## How to test
+
+`npm test`
