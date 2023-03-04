@@ -3,6 +3,7 @@ import { Writable } from "node:stream";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
+const isProd = process.env.NODE_ENV === "production";
 let bootstrapScript: string | null = null;
 
 async function renderToStream(jsx: React.ReactElement): Promise<string> {
@@ -17,13 +18,14 @@ async function renderToStream(jsx: React.ReactElement): Promise<string> {
   });
 
   bootstrapScript =
-    bootstrapScript ??
-    JSON.parse(
-      await readFile(
-        path.join(__dirname, "../dist/webpack-stats.json"),
-        "utf-8"
-      )
-    )["main.js"];
+    isProd && bootstrapScript
+      ? bootstrapScript
+      : JSON.parse(
+          await readFile(
+            path.join(__dirname, "../dist/webpack-stats.json"),
+            "utf-8"
+          )
+        )["main.js"];
 
   return new Promise((resolve, reject) => {
     if (bootstrapScript === null) {
