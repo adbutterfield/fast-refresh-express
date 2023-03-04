@@ -27,6 +27,9 @@ const addDevMiddleware = (app: Express): void => {
       webpackDevMiddleware(compiler, {
         serverSideRender: true,
         publicPath: config.output?.publicPath || "/",
+        writeToDisk: (filePath) => {
+          return /loadable-stats/.test(filePath);
+        },
       })
     );
 

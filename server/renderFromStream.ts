@@ -5,6 +5,7 @@ import path from "node:path";
 
 const isProd = process.env.NODE_ENV === "production";
 let bootstrapScript: string | null = null;
+// let stats: Record<"string", "string"> | null = null;
 
 async function renderToStream(jsx: React.ReactElement): Promise<string> {
   let body = "";

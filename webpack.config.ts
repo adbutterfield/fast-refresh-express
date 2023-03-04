@@ -2,7 +2,8 @@ import path from "node:path";
 import webpack from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { WebpackManifestPlugin } from "webpack-manifest-plugin";
-import swcConfig from "./swc.config.json";
+import LoadablePlugin from "@loadable/webpack-plugin";
+// import swcConfig from "./swc.config.json";
 
 const isDevMode = process.env.NODE_ENV === "development";
 
@@ -11,6 +12,7 @@ const sharedPlugins = [
     fileName: "webpack-stats.json",
     writeToFileEmit: true,
   }),
+  new LoadablePlugin(),
 ];
 const plugins = isDevMode
   ? [
