@@ -12,7 +12,18 @@
         "refresh": true
       }
     },
-    "keepClassNames": true
+    "keepClassNames": true,
+    "experimental": {
+      "plugins": [
+        [
+          "@swc/plugin-styled-components",
+          {
+            "displayName": false,
+            "ssr": true
+          }
+        ]
+      ]
+    }
   },
   "module": {
     "type": "commonjs"
