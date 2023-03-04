@@ -20,7 +20,8 @@
             "displayName": false,
             "ssr": true
           }
-        ]
+        ],
+        ["@swc/plugin-loadable-components", {}]
       ]
     }
   },
