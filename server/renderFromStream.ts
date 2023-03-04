@@ -3,7 +3,7 @@ import { Writable } from "node:stream";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-let webpackStats: Record<string, string> = {};
+let bootstrapScript: string | null = null;
 
 async function renderToStream(jsx: React.ReactElement): Promise<string> {
   let body = "";
@@ -16,13 +16,21 @@ async function renderToStream(jsx: React.ReactElement): Promise<string> {
     },
   });
 
-  webpackStats = JSON.parse(
-    await readFile(path.join(__dirname, "../dist/webpack-stats.json"), "utf-8")
-  );
+  bootstrapScript =
+    bootstrapScript ??
+    JSON.parse(
+      await readFile(
+        path.join(__dirname, "../dist/webpack-stats.json"),
+        "utf-8"
+      )
+    )["main.js"];
 
   return new Promise((resolve, reject) => {
+    if (bootstrapScript === null) {
+      return reject("Cannot find bootstrapScripts path");
+    }
     const { pipe } = renderToPipeableStream(jsx, {
-      bootstrapScripts: [webpackStats["main.js"]],
+      bootstrapScripts: [bootstrapScript],
       onAllReady() {
         pipe(writableStream);
       },
