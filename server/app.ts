@@ -27,8 +27,4 @@ app.use((err: any, req: Req, res: Res, next: Next) => {
   return res.json(err);
 });
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.info([`App is listening on port ${port}!`]);
-});
+export default app;
