@@ -6,6 +6,25 @@ import swcConfig from "./swc.config.json";
 
 const isDevMode = process.env.NODE_ENV === "development";
 
+const webpackSwcConfig = {
+  ...swcConfig,
+  jsc: {
+    ...swcConfig.jsc,
+    transform: {
+      react: {
+        runtime: "automatic",
+        // Enable fast refresh in dev
+        refresh: isDevMode,
+      },
+    },
+  },
+  module: {
+    // Set module type to get code splitting.
+    // Code splitting does not work for type: "commonjs".
+    type: "nodenext",
+  },
+};
+
 const sharedPlugins = [
   new WebpackManifestPlugin({
     fileName: "webpack-stats.json",
@@ -53,21 +72,7 @@ const webpackConfig: webpack.Configuration = {
         include: [path.join(__dirname, "react")], // only bundle files in this directory
         use: {
           loader: "swc-loader",
-          options: {
-            ...swcConfig,
-            jsc: {
-              ...swcConfig.jsc,
-              transform: {
-                react: {
-                  runtime: "automatic",
-                  refresh: isDevMode,
-                },
-              },
-            },
-            module: {
-              type: "nodenext",
-            },
-          },
+          options: webpackSwcConfig,
         },
       },
     ],
