@@ -36,6 +36,7 @@ const webpackConfig: webpack.Configuration = {
     main,
   },
   output: {
+    clean: true,
     path: path.resolve(__dirname, "./dist"),
     filename: `[name]${contenthash}.js`,
     chunkFilename: `[name].chunk${contenthash}.js`,
@@ -51,8 +52,22 @@ const webpackConfig: webpack.Configuration = {
         exclude: /node_modules/,
         include: [path.join(__dirname, "react")], // only bundle files in this directory
         use: {
-          loader: "swc-loader", // cf. .swc.json in this folder and browser list in package.json
-          ...(isDevMode && { options: swcConfig }),
+          loader: "swc-loader",
+          options: {
+            ...swcConfig,
+            jsc: {
+              ...swcConfig.jsc,
+              transform: {
+                react: {
+                  runtime: "automatic",
+                  refresh: isDevMode,
+                },
+              },
+            },
+            module: {
+              type: "nodenext",
+            },
+          },
         },
       },
     ],
