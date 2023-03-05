@@ -8,7 +8,7 @@
     "prebuild": "rm -rf .tmp/dev-react-cache && rm -rf dist && rm -rf .swc/plugins",
     "build": "NODE_ENV=production webpack",
     "dev": "nodemon --ext env,js,ts,tsx,html --watch './server' --exec node -- server",
-    "test": "jest"
+    "test": "npm run build && jest"
   },
   "author": "",
   "license": "ISC",
