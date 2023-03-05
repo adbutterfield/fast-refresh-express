@@ -25,7 +25,7 @@ const plugins = isDevMode
   : sharedPlugins;
 
 const main = isDevMode
-  ? ["webpack-hot-middleware/client", "./react/index.tsx"]
+  ? ["@gatsbyjs/webpack-hot-middleware/client", "./react/index.tsx"]
   : ["./react/index.tsx"];
 
 const contenthash = isDevMode ? "" : ".[contenthash:8]";
