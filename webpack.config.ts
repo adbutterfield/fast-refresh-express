@@ -3,7 +3,7 @@ import webpack from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { WebpackManifestPlugin } from "webpack-manifest-plugin";
 import LoadablePlugin from "@loadable/webpack-plugin";
-// import swcConfig from "./swc.config.json";
+import swcConfig from "./swc.config.json";
 
 const isDevMode = process.env.NODE_ENV === "development";
 
