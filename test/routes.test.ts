@@ -17,6 +17,11 @@ describe("routes", () => {
       .cWyQvG{font-weight:bold;}/*!sc*/
       data-styled.g2[id="sc-6c7e62e1-1"]{content:"cWyQvG,gLlNqU,"}/*!sc*/
       </style>
+          <script id="__LOADABLE_REQUIRED_CHUNKS__" type="application/json">[772]</script><script id="__LOADABLE_REQUIRED_CHUNKS___ext" type="application/json">{"namedChunks":["Top"]}</script>
+      <script async data-chunk="main" src="/main.9487cfa7.js"></script>
+      <script async data-chunk="Top" src="/Top.chunk.b8dbe8dd.js"></script>
+          <link data-chunk="main" rel="preload" as="script" href="/main.9487cfa7.js">
+      <link data-chunk="Top" rel="preload" as="script" href="/Top.chunk.b8dbe8dd.js">
         </head>
         <body>
           <div id="react-app"><!--$--><a class="sc-6c7e62e1-1 cWyQvG" href="/">Link to Top</a><br/><br/><a class="sc-6c7e62e1-1 gLlNqU" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-6c7e62e1-0 wKgCJ">TOP</div><!--/$--><!--/$--><script src="/main.9487cfa7.js" async=""></script></div>
@@ -48,6 +53,11 @@ describe("routes", () => {
       .cWyQvG{font-weight:bold;}/*!sc*/
       data-styled.g2[id="sc-6c7e62e1-1"]{content:"gLlNqU,cWyQvG,"}/*!sc*/
       </style>
+          <script id="__LOADABLE_REQUIRED_CHUNKS__" type="application/json">[439]</script><script id="__LOADABLE_REQUIRED_CHUNKS___ext" type="application/json">{"namedChunks":["Page"]}</script>
+      <script async data-chunk="main" src="/main.9487cfa7.js"></script>
+      <script async data-chunk="Page" src="/Page.chunk.cd84071c.js"></script>
+          <link data-chunk="main" rel="preload" as="script" href="/main.9487cfa7.js">
+      <link data-chunk="Page" rel="preload" as="script" href="/Page.chunk.cd84071c.js">
         </head>
         <body>
           <div id="react-app"><!--$--><a class="sc-6c7e62e1-1 gLlNqU" href="/">Link to Top</a><br/><br/><a class="sc-6c7e62e1-1 cWyQvG" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-6c7e62e1-0 wKgCJ">PAGE</div><!--/$--><!--/$--><script src="/main.9487cfa7.js" async=""></script></div>
