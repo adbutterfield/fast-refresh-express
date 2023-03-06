@@ -25,34 +25,12 @@ const webpackSwcConfig = {
   },
 };
 
-const sharedPlugins = [
-  new WebpackManifestPlugin({
-    fileName: "webpack-stats.json",
-    writeToFileEmit: true,
-  }),
-];
-const plugins = isDevMode
-  ? [
-      ...sharedPlugins,
-      new webpack.HotModuleReplacementPlugin(),
-      new ReactRefreshWebpackPlugin({
-        overlay: {
-          sockIntegration: "whm",
-        },
-      }),
-    ]
-  : sharedPlugins;
-
-const main = isDevMode
-  ? ["@gatsbyjs/webpack-hot-middleware/client", "./react/index.tsx"]
-  : ["./react/index.tsx"];
-
 const contenthash = isDevMode ? "" : ".[contenthash:8]";
 
 const webpackConfig: webpack.Configuration = {
   mode: isDevMode ? "development" : "production",
   entry: {
-    main,
+    main: ["./react/index.tsx"],
   },
   output: {
     clean: true,
@@ -77,7 +55,12 @@ const webpackConfig: webpack.Configuration = {
       },
     ],
   },
-  plugins,
+  plugins: [
+    new WebpackManifestPlugin({
+      fileName: "webpack-stats.json",
+      writeToFileEmit: true,
+    }),
+  ],
   optimization: {
     moduleIds: "deterministic", // Now, despite any new local dependencies, our vendor hash should stay consistent between builds
     runtimeChunk: true, // see https://webpack.js.org/guides/build-performance/#minimal-entry-chunk
@@ -85,6 +68,20 @@ const webpackConfig: webpack.Configuration = {
 };
 
 if (isDevMode) {
+  webpackConfig.entry = {
+    main: ["@gatsbyjs/webpack-hot-middleware/client", "./react/index.tsx"],
+  };
+
+  webpackConfig.plugins = [
+    ...(webpackConfig.plugins || []),
+    new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin({
+      overlay: {
+        sockIntegration: "whm",
+      },
+    }),
+  ];
+
   webpackConfig.cache = {
     // https://webpack.js.org/configuration/other-options/#cache
     type: "filesystem",
