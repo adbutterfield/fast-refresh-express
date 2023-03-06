@@ -78,6 +78,10 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins,
+  optimization: {
+    moduleIds: "deterministic", // Now, despite any new local dependencies, our vendor hash should stay consistent between builds
+    runtimeChunk: true, // see https://webpack.js.org/guides/build-performance/#minimal-entry-chunk
+  },
 };
 
 if (isDevMode) {
