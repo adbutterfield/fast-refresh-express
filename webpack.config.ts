@@ -1,8 +1,12 @@
 import path from "node:path";
+import { readFileSync } from "node:fs";
 import webpack from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { WebpackManifestPlugin } from "webpack-manifest-plugin";
-import swcConfig from "./swc.config.json";
+
+const swcConfig = JSON.parse(
+  readFileSync(path.resolve(process.cwd(), "swc.config.json"), "utf-8")
+);
 
 const isDevMode = process.env.NODE_ENV === "development";
 
@@ -34,7 +38,7 @@ const webpackConfig: webpack.Configuration = {
   },
   output: {
     clean: true,
-    path: path.resolve(__dirname, "./build"),
+    path: path.resolve(__dirname, "./build/public"),
     filename: `[name]${contenthash}.js`,
     chunkFilename: `[name].chunk${contenthash}.js`,
     publicPath: "/",
@@ -59,6 +63,7 @@ const webpackConfig: webpack.Configuration = {
     new WebpackManifestPlugin({
       fileName: "webpack-stats.json",
       writeToFileEmit: true,
+      isInitial: true,
     }),
   ],
   optimization: {

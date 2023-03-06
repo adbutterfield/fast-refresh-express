@@ -10,7 +10,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // static assets server from the "build" folder
-app.use(express.static(path.join(__dirname, "../build"), { index: false }));
+app.use(
+  express.static(path.resolve(process.cwd(), "build/public"), { index: false })
+);
 app.use(express.json());
 app.use(express.urlencoded());
 

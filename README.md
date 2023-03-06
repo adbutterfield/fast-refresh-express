@@ -9,7 +9,8 @@ Example with:
 - [SWC](https://swc.rs/)
   - Using [swc-loader](https://www.npmjs.com/package/swc-loader) for [webpack](https://webpack.js.org/)
   - with the help of [@swc/plugin-styled-components](https://www.npmjs.com/package/@swc/plugin-styled-components)
-  - and [@swc/register](https://www.npmjs.com/package/@swc/register) to compile server-side TypeScript at runtime
+  - and [@swc/cli](https://www.npmjs.com/package/@swc/cli) to build server for production
+  - and [@swc/register](https://www.npmjs.com/package/@swc/register) to compile server-side TypeScript at runtime for dev
   - with tests using [@swc/jest](https://www.npmjs.com/package/@swc/jest)
 - [React Fast Refresh](https://www.npmjs.com/package/react-refresh)
   - Using [@pmmmwh/react-refresh-webpack-plugin](https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin)
