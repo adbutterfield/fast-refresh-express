@@ -34,7 +34,7 @@ const webpackConfig: webpack.Configuration = {
   },
   output: {
     clean: true,
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "./build"),
     filename: `[name]${contenthash}.js`,
     chunkFilename: `[name].chunk${contenthash}.js`,
     publicPath: "/",

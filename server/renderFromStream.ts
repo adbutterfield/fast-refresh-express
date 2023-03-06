@@ -22,7 +22,7 @@ async function renderToStream(jsx: React.ReactElement): Promise<string> {
       ? bootstrapScript
       : JSON.parse(
           await readFile(
-            path.join(__dirname, "../dist/webpack-stats.json"),
+            path.join(__dirname, "../build/webpack-stats.json"),
             "utf-8"
           )
         );
