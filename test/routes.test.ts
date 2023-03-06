@@ -19,7 +19,7 @@ describe("routes", () => {
       </style>
         </head>
         <body>
-          <div id="react-app"><!--$--><a class="sc-6c7e62e1-1 cWyQvG" href="/">Link to Top</a><br/><br/><a class="sc-6c7e62e1-1 gLlNqU" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-6c7e62e1-0 wKgCJ">TOP</div><!--/$--><!--/$--><script src="/main.9487cfa7.js" async=""></script></div>
+          <div id="react-app"><!--$--><a class="sc-6c7e62e1-1 cWyQvG" href="/">Link to Top</a><br/><br/><a class="sc-6c7e62e1-1 gLlNqU" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-6c7e62e1-0 wKgCJ">TOP</div><!--/$--><!--/$--><script src="/main.js" async=""></script><script src="/runtime~main.js" async=""></script></div>
         </body>
       </html>"
     `);
@@ -50,7 +50,7 @@ describe("routes", () => {
       </style>
         </head>
         <body>
-          <div id="react-app"><!--$--><a class="sc-6c7e62e1-1 gLlNqU" href="/">Link to Top</a><br/><br/><a class="sc-6c7e62e1-1 cWyQvG" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-6c7e62e1-0 wKgCJ">PAGE</div><!--/$--><!--/$--><script src="/main.9487cfa7.js" async=""></script></div>
+          <div id="react-app"><!--$--><a class="sc-6c7e62e1-1 gLlNqU" href="/">Link to Top</a><br/><br/><a class="sc-6c7e62e1-1 cWyQvG" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-6c7e62e1-0 wKgCJ">PAGE</div><!--/$--><!--/$--><script src="/main.js" async=""></script><script src="/runtime~main.js" async=""></script></div>
         </body>
       </html>"
     `);
