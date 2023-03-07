@@ -11,9 +11,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "strict": true,
     "paths": {
+      "@pages/*": ["./react/pages/*"],
+      "@components/*": ["./react/components/*"],
       "*": ["./node_module/*"] // without this, it's trying to resolve import 'react' as react/index.ts from our workspace
     }
   }

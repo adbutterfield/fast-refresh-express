@@ -1,5 +1,5 @@
 import React from "react";
-import Cmp from "./components";
+import Cmp from "@components/Cmp";
 
 const Top: React.FC = () => {
   return <Cmp data-testid="content">TOP</Cmp>;

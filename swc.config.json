@@ -22,6 +22,11 @@
           }
         ]
       ]
+    },
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["react/pages/*"],
+      "@components/*": ["react/components/*"]
     }
   },
   "module": {

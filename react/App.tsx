@@ -1,10 +1,10 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ErrorBoundary from "./ErrorBoundary";
-import { LinkCmp } from "./components";
+import LinkCmp from "@components/Link";
 
-const Top = lazy(() => import("./Top"));
-const Page = lazy(() => import("./Page"));
+const Top = lazy(() => import("@pages/Top"));
+const Page = lazy(() => import("@pages/Page"));
 
 const App: React.FC = () => {
   const location = useLocation();
