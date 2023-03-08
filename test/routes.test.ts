@@ -12,6 +12,8 @@ describe("routes", () => {
       <html>
         <head>
           <meta charset="UTF-8">
+          <title>Fast Refresh Express</title>
+          <link rel="shortcut icon" href="/favicon.ico" />
           <style data-styled="true" data-styled-version="5.3.8">.bsdqOy{font-weight:bold;}/*!sc*/
       data-styled.g1[id="sc-c21fd39b-0"]{content:"bsdqOy,ZHDU,"}/*!sc*/
       .cHqnac{color:red;}/*!sc*/
@@ -43,6 +45,8 @@ describe("routes", () => {
       <html>
         <head>
           <meta charset="UTF-8">
+          <title>Fast Refresh Express</title>
+          <link rel="shortcut icon" href="/favicon.ico" />
           <style data-styled="true" data-styled-version="5.3.8">.bsdqOy{font-weight:bold;}/*!sc*/
       data-styled.g1[id="sc-c21fd39b-0"]{content:"ZHDU,bsdqOy,"}/*!sc*/
       .cHqnac{color:red;}/*!sc*/
