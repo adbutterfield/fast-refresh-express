@@ -4,9 +4,11 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 const isProd = process.env.NODE_ENV === "production";
-let bootstrapScript: Record<string, string> | null = null;
 
-async function renderToStream(jsx: React.ReactElement): Promise<string> {
+function getWritableStream(
+  resolve: (value: string | PromiseLike<string>) => void,
+  reject: (reason?: any) => void
+) {
   let body = "";
 
   const writableStream = new Writable({
@@ -17,6 +19,19 @@ async function renderToStream(jsx: React.ReactElement): Promise<string> {
     },
   });
 
+  writableStream.on("finish", () => {
+    return resolve(body);
+  });
+
+  writableStream.on("error", (error) => {
+    return reject(error);
+  });
+
+  return writableStream;
+}
+
+let bootstrapScript: Record<string, string> | null = null;
+async function getBootstrapScript() {
   bootstrapScript =
     isProd && bootstrapScript
       ? bootstrapScript
@@ -26,8 +41,15 @@ async function renderToStream(jsx: React.ReactElement): Promise<string> {
             "utf-8"
           )
         );
+  return bootstrapScript;
+}
+
+async function renderFromStream(jsx: React.ReactElement): Promise<string> {
+  const bootstrapScript = await getBootstrapScript();
 
   return new Promise((resolve, reject) => {
+    const writableStream = getWritableStream(resolve, reject);
+
     if (bootstrapScript === null) {
       return reject("Cannot find bootstrapScripts path");
     }
@@ -40,15 +62,7 @@ async function renderToStream(jsx: React.ReactElement): Promise<string> {
         pipe(writableStream);
       },
     });
-
-    writableStream.on("finish", () => {
-      return resolve(body);
-    });
-
-    writableStream.on("error", (error) => {
-      return reject(error);
-    });
   });
 }
 
-export default renderToStream;
+export default renderFromStream;
