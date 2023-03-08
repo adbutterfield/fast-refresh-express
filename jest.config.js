@@ -1,7 +1,8 @@
-const { readFileSync } = require("fs");
+const { readFileSync } = require("node:fs");
+const path = require("node:path");
 
 const config = JSON.parse(
-  readFileSync(`${__dirname}/swc.config.json`, "utf-8")
+  readFileSync(path.join(__dirname, "swc.config.json"), "utf-8")
 );
 
 module.exports = {
