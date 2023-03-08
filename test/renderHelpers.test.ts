@@ -1,5 +1,5 @@
 /**
- * Example of how to mock/spy one a named export
+ * Example of how to mock/spy on a named export
  */
 import { getBootstrapScript } from "../server/renderHelpers";
 
