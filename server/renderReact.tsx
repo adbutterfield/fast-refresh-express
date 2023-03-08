@@ -38,6 +38,7 @@ async function renderReact(
   </body>
 </html>`;
 
+    styleSheet.seal();
     return res.send(responseHtml);
   } catch (err) {
     return next(err);
