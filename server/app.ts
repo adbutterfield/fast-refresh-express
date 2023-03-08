@@ -4,15 +4,16 @@ import renderReact from "./renderReact";
 import devMiddleware from "./devMiddleware";
 
 const app = express();
+const cwd = process.cwd();
 
 if (process.env.NODE_ENV === "development") {
   devMiddleware(app);
 }
 
 // static assets server from the "build" folder
-app.use(
-  express.static(path.resolve(process.cwd(), "build/public"), { index: false })
-);
+app.use(express.static(path.resolve(cwd, "build/public"), { index: false }));
+app.use("/favicon.ico", express.static(path.resolve(cwd, "favicon.ico")));
+
 app.use(express.json());
 app.use(express.urlencoded());
 
