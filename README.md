@@ -21,6 +21,10 @@ Example with:
 
 Currently, streaming render in React 18 + styled-components has some issues. Current rendering setup right not isn't ideal maybe, but it works!
 
+## Like to use loadable-components?
+
+Checkout the [loadable-components branch](https://github.com/adbutterfield/fast-refresh-express/tree/loadable-components)!
+
 ## How to run locally
 
 Start: `npm run dev`
