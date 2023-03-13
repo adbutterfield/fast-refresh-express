@@ -56,6 +56,8 @@ async function renderReact(
 <html>
   <head>
     <meta charset="UTF-8">
+    <title>Fast Refresh Express</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
     ${
       /* styles for styled components rendered by that page */ styleSheet.getStyleTags()
     }
@@ -67,6 +69,7 @@ async function renderReact(
   </body>
 </html>`;
 
+    styleSheet.seal();
     return res.send(responseHtml);
   } catch (err) {
     return next(err);

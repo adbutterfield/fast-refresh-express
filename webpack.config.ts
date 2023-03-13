@@ -1,9 +1,13 @@
 import path from "node:path";
+import { readFileSync } from "node:fs";
 import webpack from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { WebpackManifestPlugin } from "webpack-manifest-plugin";
 import LoadablePlugin from "@loadable/webpack-plugin";
-import swcConfig from "./swc.config.json";
+
+const swcConfig = JSON.parse(
+  readFileSync(path.resolve(process.cwd(), "swc.config.json"), "utf-8")
+);
 
 const isDevMode = process.env.NODE_ENV === "development";
 
@@ -26,39 +30,16 @@ const webpackSwcConfig = {
   },
 };
 
-const sharedPlugins = [
-  new WebpackManifestPlugin({
-    fileName: "webpack-stats.json",
-    writeToFileEmit: true,
-  }),
-  new LoadablePlugin(),
-];
-const plugins = isDevMode
-  ? [
-      ...sharedPlugins,
-      new webpack.HotModuleReplacementPlugin(),
-      new ReactRefreshWebpackPlugin({
-        overlay: {
-          sockIntegration: "whm",
-        },
-      }),
-    ]
-  : sharedPlugins;
-
-const main = isDevMode
-  ? ["@gatsbyjs/webpack-hot-middleware/client", "./react/index.tsx"]
-  : ["./react/index.tsx"];
-
 const contenthash = isDevMode ? "" : ".[contenthash:8]";
 
 const webpackConfig: webpack.Configuration = {
   mode: isDevMode ? "development" : "production",
   entry: {
-    main,
+    main: ["./react/index.tsx"],
   },
   output: {
     clean: true,
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "./build/public"),
     filename: `[name]${contenthash}.js`,
     chunkFilename: `[name].chunk${contenthash}.js`,
     publicPath: "/",
@@ -79,10 +60,36 @@ const webpackConfig: webpack.Configuration = {
       },
     ],
   },
-  plugins,
+  plugins: [
+    new WebpackManifestPlugin({
+      fileName: "webpack-stats.json",
+      writeToFileEmit: true,
+      isInitial: true,
+    }),
+    // @ts-ignore wrong type on plugin
+    new LoadablePlugin(),
+  ],
+  optimization: {
+    moduleIds: "deterministic", // Now, despite any new local dependencies, our vendor hash should stay consistent between builds
+    runtimeChunk: true, // see https://webpack.js.org/guides/build-performance/#minimal-entry-chunk
+  },
 };
 
 if (isDevMode) {
+  webpackConfig.entry = {
+    main: ["@gatsbyjs/webpack-hot-middleware/client", "./react/index.tsx"],
+  };
+
+  webpackConfig.plugins = [
+    ...(webpackConfig.plugins || []),
+    new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin({
+      overlay: {
+        sockIntegration: "whm",
+      },
+    }),
+  ];
+
   webpackConfig.cache = {
     // https://webpack.js.org/configuration/other-options/#cache
     type: "filesystem",

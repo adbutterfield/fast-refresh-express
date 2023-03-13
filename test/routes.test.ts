@@ -12,10 +12,12 @@ describe("routes", () => {
       <html>
         <head>
           <meta charset="UTF-8">
-          <style data-styled="true" data-styled-version="5.3.8">.wKgCJ{color:red;}/*!sc*/
-      data-styled.g1[id="sc-6c7e62e1-0"]{content:"wKgCJ,"}/*!sc*/
-      .cWyQvG{font-weight:bold;}/*!sc*/
-      data-styled.g2[id="sc-6c7e62e1-1"]{content:"cWyQvG,gLlNqU,"}/*!sc*/
+          <title>Fast Refresh Express</title>
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <style data-styled="true" data-styled-version="5.3.8">.bsdqOy{font-weight:bold;}/*!sc*/
+      data-styled.g1[id="sc-c21fd39b-0"]{content:"bsdqOy,ZHDU,"}/*!sc*/
+      .cHqnac{color:red;}/*!sc*/
+      data-styled.g2[id="sc-4e3bc353-0"]{content:"cHqnac,"}/*!sc*/
       </style>
           <script id="__LOADABLE_REQUIRED_CHUNKS__" type="application/json">[772]</script><script id="__LOADABLE_REQUIRED_CHUNKS___ext" type="application/json">{"namedChunks":["Top"]}</script>
       <script async data-chunk="main" src="/main.9487cfa7.js"></script>
@@ -24,7 +26,7 @@ describe("routes", () => {
       <link data-chunk="Top" rel="preload" as="script" href="/Top.chunk.b8dbe8dd.js">
         </head>
         <body>
-          <div id="react-app"><!--$--><a class="sc-6c7e62e1-1 cWyQvG" href="/">Link to Top</a><br/><br/><a class="sc-6c7e62e1-1 gLlNqU" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-6c7e62e1-0 wKgCJ">TOP</div><!--/$--><!--/$--><script src="/main.9487cfa7.js" async=""></script></div>
+          <div id="react-app"><!--$--><a class="sc-c21fd39b-0 bsdqOy" href="/">Link to Top</a><br/><br/><a class="sc-c21fd39b-0 ZHDU" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-4e3bc353-0 cHqnac">TOP</div><!--/$--><!--/$--><script src="/main.js" async=""></script><script src="/runtime~main.js" async=""></script></div>
         </body>
       </html>"
     `);
@@ -48,10 +50,12 @@ describe("routes", () => {
       <html>
         <head>
           <meta charset="UTF-8">
-          <style data-styled="true" data-styled-version="5.3.8">.wKgCJ{color:red;}/*!sc*/
-      data-styled.g1[id="sc-6c7e62e1-0"]{content:"wKgCJ,"}/*!sc*/
-      .cWyQvG{font-weight:bold;}/*!sc*/
-      data-styled.g2[id="sc-6c7e62e1-1"]{content:"gLlNqU,cWyQvG,"}/*!sc*/
+          <title>Fast Refresh Express</title>
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <style data-styled="true" data-styled-version="5.3.8">.bsdqOy{font-weight:bold;}/*!sc*/
+      data-styled.g1[id="sc-c21fd39b-0"]{content:"ZHDU,bsdqOy,"}/*!sc*/
+      .cHqnac{color:red;}/*!sc*/
+      data-styled.g2[id="sc-4e3bc353-0"]{content:"cHqnac,"}/*!sc*/
       </style>
           <script id="__LOADABLE_REQUIRED_CHUNKS__" type="application/json">[439]</script><script id="__LOADABLE_REQUIRED_CHUNKS___ext" type="application/json">{"namedChunks":["Page"]}</script>
       <script async data-chunk="main" src="/main.9487cfa7.js"></script>
@@ -60,7 +64,7 @@ describe("routes", () => {
       <link data-chunk="Page" rel="preload" as="script" href="/Page.chunk.cd84071c.js">
         </head>
         <body>
-          <div id="react-app"><!--$--><a class="sc-6c7e62e1-1 gLlNqU" href="/">Link to Top</a><br/><br/><a class="sc-6c7e62e1-1 cWyQvG" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-6c7e62e1-0 wKgCJ">PAGE</div><!--/$--><!--/$--><script src="/main.9487cfa7.js" async=""></script></div>
+          <div id="react-app"><!--$--><a class="sc-c21fd39b-0 ZHDU" href="/">Link to Top</a><br/><br/><a class="sc-c21fd39b-0 bsdqOy" href="/page">Link to Page</a><br/><br/><!--$--><div data-testid="content" class="sc-4e3bc353-0 cHqnac">PAGE</div><!--/$--><!--/$--><script src="/main.js" async=""></script><script src="/runtime~main.js" async=""></script></div>
         </body>
       </html>"
     `);

@@ -10,6 +10,7 @@ Example with:
 - [SWC](https://swc.rs/)
   - Using [swc-loader](https://www.npmjs.com/package/swc-loader) for [webpack](https://webpack.js.org/)
   - with the help of [@swc/plugin-styled-components](https://www.npmjs.com/package/@swc/plugin-styled-components) and [@swc/plugin-loadable-components](https://www.npmjs.com/package/@swc/plugin-loadable-components)
+  - and [@swc/cli](https://www.npmjs.com/package/@swc/cli) to build server for production
   - and [@swc/register](https://www.npmjs.com/package/@swc/register) to compile server-side TypeScript at runtime
   - with tests using [@swc/jest](https://www.npmjs.com/package/@swc/jest)
 - [React Fast Refresh](https://www.npmjs.com/package/react-refresh)
@@ -20,6 +21,10 @@ Example with:
 ## About React 18 streaming render
 
 Currently, streaming render in React 18 + styled-components has some issues. Current rendering setup right not isn't ideal maybe, but it works!
+
+## Like to use loadable-components?
+
+Checkout the [loadable-components branch](https://github.com/adbutterfield/fast-refresh-express/tree/loadable-components)!
 
 ## How to run locally
 

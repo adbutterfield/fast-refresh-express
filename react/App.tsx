@@ -2,10 +2,15 @@ import React, { Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import loadable from "@loadable/component";
 import ErrorBoundary from "./ErrorBoundary";
-import { LinkCmp } from "./components";
+import LinkCmp from "@components/Link";
 
+<<<<<<< HEAD
 const Top = loadable(() => import("./Top"));
 const Page = loadable(() => import("./Page"));
+=======
+const Top = lazy(() => import("@pages/Top"));
+const Page = lazy(() => import("@pages/Page"));
+>>>>>>> main
 
 const App: React.FC = () => {
   const location = useLocation();
