@@ -21,7 +21,7 @@ async function renderReact(
         ? stats
         : JSON.parse(
             await readFile(
-              path.join(__dirname, "../dist/loadable-stats.json"),
+              path.resolve(process.cwd(), "build/public/loadable-stats.json"),
               "utf-8"
             )
           );

@@ -4,13 +4,8 @@ import loadable from "@loadable/component";
 import ErrorBoundary from "./ErrorBoundary";
 import LinkCmp from "@components/Link";
 
-<<<<<<< HEAD
-const Top = loadable(() => import("./Top"));
-const Page = loadable(() => import("./Page"));
-=======
-const Top = lazy(() => import("@pages/Top"));
-const Page = lazy(() => import("@pages/Page"));
->>>>>>> main
+const Top = loadable(() => import("./pages/Top"));
+const Page = loadable(() => import("./pages/Page"));
 
 const App: React.FC = () => {
   const location = useLocation();
