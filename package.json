@@ -11,7 +11,7 @@
     "build:server": "NODE_ENV=production swc ./server -d build/server --config-file swc.config.json",
     "build:webpackConfig": "NODE_ENV=production swc ./webpack.config.ts -d build --config-file swc.config.json",
     "build": "npm run build:react:client && npm run build:react:server && npm run build:server && npm run build:webpackConfig",
-    "dev": "nodemon --exec node -- scripts/start-dev-server.js",
+    "dev": "nodemon --exec node -- dev/server.js",
     "test": "jest"
   },
   "author": "",
