@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ErrorBoundary from "./ErrorBoundary";
 import LinkCmp from "@components/Link";
+import { StyledPageTitle } from "@components/PageTitle";
 
 const Top = lazy(() => import("@pages/Top"));
 const Page = lazy(() => import("@pages/Page"));
@@ -12,6 +13,7 @@ const App: React.FC = () => {
   return (
     <Suspense fallback={<div>Suspending...</div>}>
       <ErrorBoundary>
+        <StyledPageTitle>Fast Refresh Express</StyledPageTitle>
         <LinkCmp isActive={location.pathname === "/"} to="/">
           Link to Top
         </LinkCmp>
