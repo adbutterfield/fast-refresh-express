@@ -17,7 +17,7 @@
         [
           "@swc/plugin-styled-components",
           {
-            "displayName": false,
+            "displayName": true,
             "ssr": true
           }
         ]
