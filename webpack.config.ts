@@ -77,6 +77,12 @@ if (isDevMode) {
     main: ["@gatsbyjs/webpack-hot-middleware/client", "./react/index.tsx"],
   };
 
+  webpackConfig.output = {
+    ...webpackConfig.output,
+    hotUpdateChunkFilename: "[id].hot-update.js",
+    hotUpdateMainFilename: "[runtime].hot-update.json",
+  };
+
   webpackConfig.plugins = [
     ...(webpackConfig.plugins || []),
     new webpack.HotModuleReplacementPlugin(),
