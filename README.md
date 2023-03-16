@@ -25,6 +25,10 @@ Currently, streaming render in React 18 + styled-components has some issues. Cur
 
 Checkout the [loadable-components branch](https://github.com/adbutterfield/fast-refresh-express/tree/loadable-components)!
 
+## Like to use babel?
+
+Checkout the [babel branch](https://github.com/adbutterfield/fast-refresh-express/tree/babel)!
+
 ## How to run locally
 
 Start: `npm run dev`
