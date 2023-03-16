@@ -59,6 +59,7 @@ if (isDevMode) {
   webpackConfig.output = {
     ...webpackConfig.output,
     hotUpdateChunkFilename: "[id].hot-update.js",
+    hotUpdateMainFilename: "[runtime].hot-update.json",
   };
 
   webpackConfig.plugins = [
