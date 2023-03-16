@@ -6,12 +6,12 @@ Example with:
 - [React](https://reactjs.org/) v18
 - [styled-components](https://styled-components.com/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [SWC](https://swc.rs/)
-  - Using [swc-loader](https://www.npmjs.com/package/swc-loader) for [webpack](https://webpack.js.org/)
-  - with the help of [@swc/plugin-styled-components](https://www.npmjs.com/package/@swc/plugin-styled-components)
-  - and [@swc/cli](https://www.npmjs.com/package/@swc/cli) to build server for production
-  - and [@swc/register](https://www.npmjs.com/package/@swc/register) to compile server-side TypeScript at runtime for dev
-  - with tests using [@swc/jest](https://www.npmjs.com/package/@swc/jest)
+- [Babel](https://babeljs.io/)
+  - Using [babel-loader](https://www.npmjs.com/package/babel-loader) for [webpack](https://webpack.js.org/)
+  - with the help of [babel-plugin-styled-components](https://www.npmjs.com/package/babel-plugin-styled-components)
+  - and [@babel/cli](https://www.npmjs.com/package/@babel/cli) to build server for production
+  - and [@babel/register](https://www.npmjs.com/package/@babel/register) to compile server-side TypeScript at runtime for dev
+  - with tests using [babel-jest](https://www.npmjs.com/package/babel-jest)
 - [React Fast Refresh](https://www.npmjs.com/package/react-refresh)
   - Using [@pmmmwh/react-refresh-webpack-plugin](https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin)
   - and webpack-hot-middleware (thanks to [@gatsbyjs/webpack-hot-middleware](https://www.npmjs.com/package/@gatsbyjs/webpack-hot-middleware))

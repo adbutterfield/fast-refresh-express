@@ -4,31 +4,8 @@ import webpack from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { WebpackManifestPlugin } from "webpack-manifest-plugin";
 
-const swcConfig = JSON.parse(
-  readFileSync(path.resolve(process.cwd(), "swc.config.json"), "utf-8")
-);
-
 const isDevMode = process.env.NODE_ENV === "development";
-
-const webpackSwcConfig = {
-  ...swcConfig,
-  jsc: {
-    ...swcConfig.jsc,
-    transform: {
-      react: {
-        runtime: "automatic",
-        // Enable fast refresh in dev
-        refresh: isDevMode,
-      },
-    },
-  },
-  module: {
-    // Set module type to get code splitting.
-    // Code splitting does not work for type: "commonjs".
-    type: "nodenext",
-  },
-};
-
+const jsPlugins = isDevMode ? ["react-refresh/babel"] : [];
 const contenthash = isDevMode ? "" : ".[contenthash:8]";
 
 const webpackConfig: webpack.Configuration = {
@@ -53,8 +30,10 @@ const webpackConfig: webpack.Configuration = {
         exclude: /node_modules/,
         include: [path.join(__dirname, "react")], // only bundle files in this directory
         use: {
-          loader: "swc-loader",
-          options: webpackSwcConfig,
+          loader: "babel-loader",
+          options: {
+            plugins: jsPlugins,
+          },
         },
       },
     ],
