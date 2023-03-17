@@ -1,7 +1,6 @@
 import React from "react";
 import { StaticRouter } from "react-router-dom/server";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
-import App from "../react/App";
 import renderFromStream from "./renderFromStream";
 
 async function renderReact(
@@ -10,6 +9,7 @@ async function renderReact(
   next: Next
 ): Promise<Res | void> {
   try {
+    const { default: App } = await import("../react/App");
     // Style sheet object to contain all styles generated from styled components
     const styleSheet = new ServerStyleSheet();
     // Must create a mock window object for components that might need it
