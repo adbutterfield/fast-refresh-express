@@ -104,7 +104,7 @@ if (isDevMode) {
   };
 }
 
-export const compiler = webpack(webpackConfig);
+const compiler = webpack(webpackConfig);
 
 if (isDevMode) {
   const dirName = path.resolve(__dirname, "./react/");
