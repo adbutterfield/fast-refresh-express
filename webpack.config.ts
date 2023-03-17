@@ -101,4 +101,18 @@ if (isDevMode) {
   };
 }
 
+export const compiler = webpack(webpackConfig);
+
+if (isDevMode) {
+  const dirName = path.resolve(__dirname, "./react/");
+
+  compiler.hooks.afterEmit.tap("cleanup-the-require-cache", () => {
+    // After webpack rebuild, clear the files from the require cache,
+    // so that next server side render will be in sync
+    Object.keys(require.cache)
+      .filter((key) => key.includes(dirName))
+      .forEach((key) => delete require.cache[key]);
+  });
+}
+
 export default webpackConfig;
