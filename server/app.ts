@@ -1,13 +1,14 @@
 import express from "express";
 import path from "node:path";
 import renderReact from "./renderReact";
-import devMiddleware from "./devMiddleware";
+import { devMiddleware, hotMiddleware } from "../webpack.config";
 
 const app = express();
 const cwd = process.cwd();
 
 if (process.env.NODE_ENV === "development") {
-  devMiddleware(app);
+  app.use(devMiddleware);
+  app.use(hotMiddleware);
 }
 
 // static assets server from the "build" folder

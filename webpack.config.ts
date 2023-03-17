@@ -3,6 +3,9 @@ import { readFileSync } from "node:fs";
 import webpack from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { WebpackManifestPlugin } from "webpack-manifest-plugin";
+import webpackDevMiddleware from "webpack-dev-middleware";
+import webpackHotMiddleware from "@gatsbyjs/webpack-hot-middleware";
+import type { Request, Response, NextFunction } from "express";
 
 const swcConfig = JSON.parse(
   readFileSync(path.resolve(process.cwd(), "swc.config.json"), "utf-8")
@@ -114,5 +117,20 @@ if (isDevMode) {
       .forEach((key) => delete require.cache[key]);
   });
 }
+
+export const devMiddleware = isDevMode
+  ? webpackDevMiddleware(compiler, {
+      serverSideRender: true,
+      publicPath: webpackConfig.output?.publicPath || "/",
+    })
+  : (req: Request, res: Response, next: NextFunction) => next();
+
+export const hotMiddleware = isDevMode
+  ? webpackHotMiddleware(compiler, {
+      log: false,
+      path: "/__webpack_hmr",
+      heartbeat: 10 * 1000,
+    })
+  : (req: Request, res: Response, next: NextFunction) => next();
 
 export default webpackConfig;
