@@ -1,12 +1,24 @@
 module.exports = {
   presets: [
-    "@babel/preset-env",
+    [
+      "@babel/preset-env",
+      {
+        targets: {
+          node: "current",
+        },
+        useBuiltIns: "usage",
+        corejs: 3,
+      },
+    ],
     "@babel/preset-react",
     "@babel/preset-typescript",
   ],
   plugins: [
     "@babel/plugin-transform-runtime",
-    "babel-plugin-styled-components",
+    [
+      "babel-plugin-styled-components",
+      { ssr: true, displayName: true, preprocess: false },
+    ],
     [
       "module-resolver",
       {
