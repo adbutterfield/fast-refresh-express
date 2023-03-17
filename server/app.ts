@@ -1,6 +1,6 @@
 import express from "express";
 import path from "node:path";
-import renderReact from "./renderReact";
+import renderReact from "./ssr/renderReact";
 import { devMiddleware, hotMiddleware } from "../webpack.config";
 
 const app = express();

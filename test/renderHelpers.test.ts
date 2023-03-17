@@ -1,10 +1,10 @@
 /**
  * Example of how to mock/spy on a named export
  */
-import { getBootstrapScript } from "../server/renderHelpers";
+import { getBootstrapScript } from "../server/ssr/renderHelpers";
 
-jest.mock("../server/renderHelpers", () => {
-  const originalModule = jest.requireActual("../server/renderHelpers");
+jest.mock("../server/ssr/renderHelpers", () => {
+  const originalModule = jest.requireActual("../server/ssr/renderHelpers");
 
   return {
     ...originalModule,

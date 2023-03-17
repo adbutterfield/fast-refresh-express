@@ -9,7 +9,7 @@ async function renderReact(
   next: Next
 ): Promise<Res | void> {
   try {
-    const { default: App } = await import("../react/App");
+    const { default: App } = await import("../../react/App");
     // Style sheet object to contain all styles generated from styled components
     const styleSheet = new ServerStyleSheet();
     // Must create a mock window object for components that might need it
