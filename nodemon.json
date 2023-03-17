@@ -1,6 +1,7 @@
 {
   "watch": [
     "server/",
+    "dev/",
     "tsconfig.json",
     "webpack.config.ts",
     "swc.config.json",
