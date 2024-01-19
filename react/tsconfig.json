@@ -14,9 +14,9 @@
     "baseUrl": ".",
     "strict": true,
     "paths": {
-      "@pages/*": ["./react/pages/*"],
-      "@components/*": ["./react/components/*"],
-      "*": ["./node_module/*"] // without this, it's trying to resolve import 'react' as react/index.ts from our workspace
+      "@pages/*": ["./pages/*"],
+      "@components/*": ["./components/*"],
+      "*": ["../node_module/*"] // without this, it's trying to resolve import 'react' as react/index.ts from our workspace
     }
   }
 }
